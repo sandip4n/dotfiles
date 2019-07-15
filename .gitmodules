@@ -28,3 +28,6 @@
 [submodule ".config/nvim/bundle/promptline"]
 	path = .config/nvim/bundle/promptline
 	url = https://github.com/edkolev/promptline.vim.git
+[submodule ".config/nvim/bundle/tmuxline"]
+	path = .config/nvim/bundle/tmuxline
+	url = https://github.com/edkolev/tmuxline.vim.git
