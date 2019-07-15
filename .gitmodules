@@ -19,3 +19,9 @@
 [submodule ".config/nvim/bundle/tagbar"]
 	path = .config/nvim/bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
+[submodule ".tmux/plugins/tmux-sensible"]
+	path = .tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
