@@ -40,8 +40,11 @@ nmap <silent> <C-Up> <Plug>GitGutterPrevHunk
 nmap <silent> <C-Down> <Plug>GitGutterNextHunk
 
 " Mappings to navigate tags
-nnoremap <C-T> <C-]>
-nnoremap <C-P> <C-O>
+nnoremap <silent> <C-T> :GtagsCursor<CR>
+nnoremap <silent> <C-F> :Gtags -r<CR><CR>
+nnoremap <silent> <C-[> :cp<CR>
+nnoremap <silent> <C-]> :cn<CR>
+nnoremap <silent> <C-\> :cclose<CR>
 
 " Mappings to search symbols
 nmap <C-F>s :scs find s <C-R>=expand("<cword>")<CR><CR>

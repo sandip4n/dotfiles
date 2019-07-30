@@ -31,3 +31,6 @@
 [submodule ".config/nvim/bundle/tmuxline"]
 	path = .config/nvim/bundle/tmuxline
 	url = https://github.com/edkolev/tmuxline.vim.git
+[submodule ".config/nvim/bundle/gtags"]
+	path = .config/nvim/bundle/gtags
+	url = https://github.com/vim-scripts/gtags.vim
