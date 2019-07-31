@@ -14,4 +14,6 @@ cp    -f  .tmux.conf               ~/
 cp    -f  .promptline.conf         ~/
 cp    -f  .tmuxline.conf           ~/
 
+wget  -O  ~/.fzf.conf              https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.bash
+
 cat       .bashrc >>               ~/.bashrc
