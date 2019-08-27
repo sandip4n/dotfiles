@@ -17,6 +17,8 @@ cp	-f	.tmuxline.conf				~/
 wget	-O	~/.fzf.conf				https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.bash
 wget	-O	~/.config/fish/conf.d/fzf.fish		https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.fish
 wget	-O	~/.config/fish/conf.d/dracula.fish	https://raw.githubusercontent.com/dracula/fish/master/dracula.fish
+mkdir	-p	~/.config/fish/completions
+cp	-Rf	.config/fish/completions		~/.config/fish/completions
 
 cat	.bashrc	>>					~/.bashrc
 source	~/.bashrc
