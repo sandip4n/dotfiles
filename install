@@ -1,20 +1,20 @@
-#!/bin/bash
+#!/bin/sh
 
 git submodule update --init
 git submodule update --remote
 
-cp    -Rf .config                 ~/
-mkdir -p  ~/.vim
-ln    -sf ~/.config/nvim/init.vim ~/.vimrc
-ln    -sf ~/.config/nvim/autoload ~/.vim/autoload
-ln    -sf ~/.config/nvim/bundle   ~/.vim/bundle
+cp	-Rf	.config					~/
+mkdir	-p	~/.vim
+ln	-sf	~/.config/nvim/init.vim			~/.vimrc
+ln	-sf	~/.config/nvim/autoload			~/.vim/autoload
+ln	-sf	~/.config/nvim/bundle			~/.vim/bundle
 
-cp    -Rf .tmux                    ~/
-cp    -f  .tmux.conf               ~/
-cp    -f  .promptline.conf         ~/
-cp    -f  .tmuxline.conf           ~/
+cp	-Rf	.tmux					~/
+cp	-f	.tmux.conf				~/
+cp	-f	.promptline.conf			~/
+cp	-f	.tmuxline.conf				~/
 
-wget  -O  ~/.fzf.conf              https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.bash
+wget	-O	~/.fzf.conf				https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.bash
 
-cat       .bashrc >>               ~/.bashrc
-source    ~/.bashrc
+cat	.bashrc	>>					~/.bashrc
+source	~/.bashrc
