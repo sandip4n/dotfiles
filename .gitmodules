@@ -34,3 +34,6 @@
 [submodule ".config/nvim/bundle/gtags"]
 	path = .config/nvim/bundle/gtags
 	url = https://github.com/vim-scripts/gtags.vim
+[submodule ".config/nvim/bundle/devicons"]
+	path = .config/nvim/bundle/devicons
+	url = https://github.com/ryanoasis/vim-devicons.git

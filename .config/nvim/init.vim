@@ -17,6 +17,7 @@ set smarttab
 set tabstop=8
 set termguicolors
 set updatetime=250
+set encoding=utf8
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
