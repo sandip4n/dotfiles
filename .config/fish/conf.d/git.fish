@@ -1,3 +1,3 @@
-for file in (find ~/.config/fish/completions -name 'git-*.fish')
+for file in (find $XDG_CONFIG_HOME/fish/completions -name 'git-*.fish')
 	source $file
 end

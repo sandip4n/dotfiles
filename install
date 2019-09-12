@@ -1,24 +1,37 @@
-#!/bin/sh
+#!/usr/bin/fish
 
+# fetch submodules
 git submodule update --init
 git submodule update --remote
 
-cp	-Rf	.config					~/
-mkdir	-p	~/.vim
-ln	-sf	~/.config/nvim/init.vim			~/.vimrc
-ln	-sf	~/.config/nvim/autoload			~/.vim/autoload
-ln	-sf	~/.config/nvim/bundle			~/.vim/bundle
+# setup base configuration
+if test -z "$XDG_CONFIG_HOME"
+	set -x XDG_CONFIG_HOME $HOME/.config
+end
+rm -rf $XDG_CONFIG_HOME/nvim $XDG_CONFIG_HOME/fish $XDG_CONFIG_HOME/tmux
+cp -Rf .config/* $XDG_CONFIG_HOME
 
-cp	-Rf	.tmux					~/
-cp	-f	.tmux.conf				~/
-cp	-f	.promptline.conf			~/
-cp	-f	.tmuxline.conf				~/
+# setup vim configuration
+rm -rf $HOME/.vim $HOME/.vimrc
+mkdir -p $HOME/.vim
+ln -sf $XDG_CONFIG_HOME/nvim/init.vim $HOME/.vimrc
+ln -sf $XDG_CONFIG_HOME/nvim/autoload $HOME/.vim/autoload
+ln -sf $XDG_CONFIG_HOME/nvim/bundle   $HOME/.vim/bundle
 
-wget	-O	~/.fzf.conf				https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.bash
-wget	-O	~/.config/fish/conf.d/fzf.fish		https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.fish
-wget	-O	~/.config/fish/conf.d/dracula.fish	https://raw.githubusercontent.com/dracula/fish/master/dracula.fish
-mkdir	-p	~/.config/fish/completions
-cp	-Rf	.config/fish/completions		~/.config/fish/completions
+# setup fish configuration
+wget -O $XDG_CONFIG_HOME/fish/conf.d/fzf.fish     https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.fish
+wget -O $XDG_CONFIG_HOME/fish/conf.d/dracula.fish https://raw.githubusercontent.com/dracula/fish/master/dracula.fish
 
-cat	.bashrc	>>					~/.bashrc
-source	~/.bashrc
+# setup bash configuration
+wget -O $XDG_CONFIG_HOME/bash/conf.d/fzf.bash     https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.bash
+cat .bashrc >> $HOME/.bashrc
+if test -n "$BASH"
+	bash -c 'source $HOME/.bashrc'
+end
+
+# setup tmux configuration
+rm -rf $HOME/.tmux.conf
+ln -sf $XDG_CONFIG_HOME/tmux/tmux.conf $HOME/.tmux.conf
+if test -n "$TMUX"
+	tmux source $XDG_CONFIG_HOME/tmux/tmux.conf
+end
