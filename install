@@ -11,6 +11,14 @@ function __has
     end
 end
 
+function __run_int
+    $argv
+    if test $status -ne 0
+        echo "error: $argv[1] failed"
+        exit 1
+    end
+end
+
 function __run_cmd
     command $argv
     if test $status -ne 0
@@ -48,5 +56,42 @@ function setup__starship
     echo "info: starship setup end"
 end
 
-__has fish curl stow
+function setup__fish
+    echo "info: fish setup begin"
+    if test -d $HOME/.config/fish
+        if not test -w $HOME/.config/fish
+            echo "error: fish setup failed"
+            status --print-stack-trace
+            exit 1
+        end
+        echo "info: fish setup clean"
+        __run_cmd rm -rf $HOME/.config/fish
+    end
+
+    echo "info: fish install config"
+    __run_cmd stow --no-folding --target $HOME fish
+
+    echo "info: fish install plugins"
+    curl --fail --no-progress-meter --location https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+    __check_pipe
+    __run_int fisher install jorgebucaran/fisher
+    __run_int fisher install PatrickF1/fzf.fish
+    __run_int fisher install dracula/fish
+    __run_int fish_config theme choose "Dracula Official"
+    __run_int fish_config theme save
+    if set --query FZF_DEFAULT_OPTS
+        __run_int set --erase FZF_DEFAULT_OPTS
+    end
+    # from https://draculatheme.com/fzf
+    __run_int set --universal --export FZF_DEFAULT_OPTS "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+
+    if test -d $HOME/.local/bin
+        __run_int set --universal fish_user_paths $HOME/.local/bin $fish_user_paths
+    end
+
+    echo "info: fish setup end"
+end
+
+__has fish curl stow fzf
 setup__starship
+setup__fish
