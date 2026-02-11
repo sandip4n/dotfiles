@@ -1,0 +1,13 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.ai.avante",
+    "lazyvim.plugins.extras.editor.fzf",
+    "lazyvim.plugins.extras.editor.overseer",
+    "lazyvim.plugins.extras.lang.clangd"
+  ],
+  "install_version": 8,
+  "news": {
+    "NEWS.md": "11866"
+  },
+  "version": 8
+}

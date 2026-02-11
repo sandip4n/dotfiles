@@ -110,7 +110,34 @@ function setup__tmux
     echo "info: tmux setup end"
 end
 
-__has fish curl stow fzf tmux
+function setup__nvim
+    echo "info: nvim setup begin"
+    if test -d $HOME/.config/nvim
+        echo "info: nvim setup clean"
+        __run_cmd rm -rf $HOME/.config/nvim
+        __run_cmd rm -rf $HOME/.local/share/nvim
+        __run_cmd rm -rf $HOME/.local/state/nvim
+        __run_cmd rm -rf $HOME/.cache/nvim
+    end
+
+    echo "info: nvim install config"
+    __run_cmd stow --no-folding --target $HOME nvim
+
+    # FIXME: Use the delay as a hack to wait for some deferred, asynchronous
+    # plugin setups, such as those handled by mason and treesitter, which Lazy
+    # does not otherwise wait for
+    echo "info: nvim install plugins"
+    __run_cmd nvim --headless "+Lazy install" "+MasonUpdate" "+sleep 10" "+qall"
+
+    # Add a newline since nvim output may not always end with one
+    echo
+    echo "note: nvim setup may be deferred"
+
+    echo "info: nvim setup end"
+end
+
+__has fish curl stow fzf tmux nvim unzip
 setup__starship
 setup__fish
 setup__tmux
+setup__nvim
