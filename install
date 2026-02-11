@@ -92,6 +92,25 @@ function setup__fish
     echo "info: fish setup end"
 end
 
-__has fish curl stow fzf
+function setup__tmux
+    echo "info: tmux setup begin"
+    if test -f $HOME/.tmux.conf -o -d $HOME/.tmux
+        echo "info: tmux setup clean"
+        __run_cmd rm -f $HOME/.tmux.conf
+        __run_cmd rm -rf $HOME/.tmux
+    end
+
+    echo "info: tmux install config"
+    __run_cmd stow --no-folding --target $HOME tmux
+
+    echo "info: tmux install plugins"
+    __run_cmd git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+    __run_cmd sh $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+    echo "info: tmux setup end"
+end
+
+__has fish curl stow fzf tmux
 setup__starship
 setup__fish
+setup__tmux
