@@ -1,0 +1,52 @@
+#!/usr/bin/env fish
+
+function __has
+    for var in $argv
+        if not type -q $var
+            echo "error: $var not found"
+            exit 1
+        else
+            echo "info: $var found"
+        end
+    end
+end
+
+function __run_cmd
+    command $argv
+    if test $status -ne 0
+        echo "error: $argv[1] failed"
+        exit 1
+    end
+end
+
+function __check_pipe
+    for var in $pipestatus
+        if test $var -ne 0
+            echo "error: pipe failed"
+            status --print-stack-trace
+            exit 1
+        end
+    end
+end
+
+function setup__starship
+    echo "info: starship setup begin"
+    if not type -q starship
+        echo "info: starship not found"
+        curl --fail --no-progress-meter --location https://raw.githubusercontent.com/starship/starship/refs/heads/master/install/install.sh | sh -s -- --yes --bin-dir $HOME/.local/bin
+        __check_pipe
+    end
+
+    if test -f $HOME/.config/starship.toml
+        echo "info: starship setup clean"
+        __run_cmd rm -f $HOME/.config/starship.toml
+    end
+
+    echo "info: starship install config"
+    __run_cmd stow --no-folding --target $HOME starship
+
+    echo "info: starship setup end"
+end
+
+__has fish curl stow
+setup__starship

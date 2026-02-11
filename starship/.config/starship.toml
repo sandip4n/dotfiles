@@ -1,0 +1,122 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+$os\
+$hostname\
+$username\
+$directory\
+"""
+
+right_format = """
+$status\
+$git_branch\
+$git_commit\
+"""
+
+palette = "dracula"
+
+[os]
+disabled = false
+format = "[ $symbol ]($style)"
+style = "fg:gray bg:purple"
+
+[os.symbols]
+AlmaLinux = ""
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = ""
+Artix = ""
+CentOS = ""
+Debian = ""
+Elementary = ""
+EndeavourOS = ""
+Fedora = ""
+FreeBSD = ""
+Garuda = ""
+Gentoo = ""
+Illumos = ""
+Ios = "󰀷"
+Kali = ""
+Linux = ""
+Macos = ""
+Manjaro = ""
+Mariner = ""
+Mint = "󰣭"
+NixOS = ""
+Nobara = ""
+OpenBSD = ""
+openSUSE = ""
+Pop = ""
+Raspbian = ""
+Redhat = ""
+RedHatEnterprise = ""
+RockyLinux = ""
+Solus = ""
+SUSE = ""
+Ubuntu = ""
+Void = ""
+Windows = ""
+Zorin = ""
+
+[hostname]
+disabled = false
+format = "[$hostname ]($style)"
+style = "fg:black bg:purple"
+ssh_only = false
+
+[username]
+disabled = false
+format = "[](fg:prev_bg bg:blue)[ $user ]($style)"
+style_user = "fg:white bg:blue"
+style_root = "fg:white bg:blue"
+show_always = true
+
+[directory]
+disabled = false
+format = "[](fg:prev_bg bg:gray)[ $path ]($style)[](fg:prev_bg) "
+style = "fg:white bg:gray"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[status]
+disabled = false
+format = "[](fg:orange bg:prev_bg)[ $status ]($style)"
+style = "fg:black bg:orange"
+success_symbol = ""
+success_style = ""
+symbol = ""
+failure_style = "fg:black bg:orange"
+recognize_signal_code = false
+pipestatus = false
+
+[git_branch]
+disabled = false
+format = "[](fg:blue bg:prev_bg)[ $symbol $branch ]($style)"
+style = "fg:white bg:blue"
+symbol = ""
+truncation_length = 32
+only_attached = false
+
+[git_commit]
+disabled = false
+format = "[at $hash ]($style)"
+style = "fg:prev_fg bg:prev_bg"
+commit_hash_length = 12
+only_detached = true
+tag_disabled = true
+
+# see https://github.com/dracula/dracula-theme?tab=readme-ov-file#dracula
+[palettes.dracula]
+blue = "#6272a4"
+black = "#282a36"
+cyan = "#8be9fd"
+gray = "#44475a"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+white = "#f8f8f2"
+yellow = "#f1fa8c"
