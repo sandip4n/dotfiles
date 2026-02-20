@@ -4,6 +4,7 @@
 
 local opt = vim.opt
 
+opt.conceallevel = 0
 opt.expandtab = false
 opt.shiftwidth = 8
 opt.relativenumber = false
