@@ -8,6 +8,9 @@ mise activate fish | source
 # Initialize starship
 starship init fish | source
 
+# Initialize zoxide
+zoxide init fish | source
+
 # Restore old backward-kill-* bindings
 bind alt-backspace backward-kill-word
 bind ctrl-alt-h backward-kill-word

@@ -9,6 +9,7 @@ function install__pkgs
     mise use -g fzf@latest
     mise use -g neovim@latest
     mise use -g starship@latest
+    mise use -g zoxide@latest
 end
 
 install__pkgs
