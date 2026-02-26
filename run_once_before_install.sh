@@ -6,6 +6,7 @@ function install__pkgs
         curl --silent --show-error --location https://mise.run | sh
     end
 
+    ~/.local/bin/mise activate fish | source
     mise use -g fzf@latest
     mise use -g neovim@latest
     mise use -g starship@latest
