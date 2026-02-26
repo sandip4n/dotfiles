@@ -5,10 +5,7 @@ function install__pkgs
     curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
     fisher install jorgebucaran/fisher
     fisher install PatrickF1/fzf.fish
-    fisher install dracula/fish
-
-    fish_config theme choose "Dracula Official"
-    fish_config theme save
+    fisher install catppuccin/fish
 
     echo "info: install packages - tmux"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
