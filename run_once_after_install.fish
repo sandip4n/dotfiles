@@ -9,6 +9,10 @@ function install__pkgs
 
     fish_config theme choose "Dracula Official"
     fish_config theme save
+
+    echo "info: install packages - tmux"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    ~/.tmux/plugins/tpm/bin/install_plugins
 end
 
 install__pkgs
