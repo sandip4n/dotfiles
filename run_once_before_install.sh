@@ -9,6 +9,8 @@ function install__pkgs
     ~/.local/bin/mise activate fish | source
     mise use -g fzf@latest
     mise use -g neovim@latest
+    mise use -g node@latest
+    mise use -g python@latest
     mise use -g starship@latest
     mise use -g tmux@latest
     mise use -g zoxide@latest
