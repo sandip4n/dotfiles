@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 # Initialize mise
-mise activate fish | source
+~/.local/bin/mise activate fish | source
 
 # Initialize starship
 starship init fish | source
