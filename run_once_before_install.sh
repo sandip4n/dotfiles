@@ -6,6 +6,7 @@ function install__pkgs
         curl --silent --show-error --location https://mise.run | sh
     end
 
+    echo "info: install packages - mise"
     ~/.local/bin/mise activate fish | source
     mise use -g fzf@latest
     mise use -g neovim@latest
@@ -14,6 +15,12 @@ function install__pkgs
     mise use -g starship@latest
     mise use -g tmux@latest
     mise use -g zoxide@latest
+
+    echo "info: install packages - fisher"
+    curl --silent --show-error --location https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+    fisher install jorgebucaran/fisher
+    fisher install PatrickF1/fzf.fish
+    fisher install catppuccin/fish
 end
 
 install__pkgs
