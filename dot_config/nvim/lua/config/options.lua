@@ -4,8 +4,10 @@
 
 local opt = vim.opt
 
+opt.colorcolumn = "80"
 opt.conceallevel = 0
 opt.expandtab = false
 opt.relativenumber = false
 opt.shiftwidth = 8
 opt.tabstop = 8
+opt.wrap = false
