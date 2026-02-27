@@ -1,5 +1,21 @@
 #!/usr/bin/env fish
 
+function cleanup__pkgs
+    echo "info: cleanup"
+
+    rm -rf ~/.config/nvim
+    rm -rf ~/.local/share/nvim
+    rm -rf ~/.local/state/nvim
+    rm -rf ~/.cache/nvim
+
+    rm -rf ~/.config/fish
+
+    rm -rf ~/.config/starship.toml
+
+    rm -rf ~/.tmux.conf
+    rm -rf ~/.tmux
+end
+
 function install__pkgs
     echo "info: install packages - mise"
     if not type -q mise
@@ -23,4 +39,5 @@ function install__pkgs
     fisher install catppuccin/fish
 end
 
+cleanup__pkgs
 install__pkgs
