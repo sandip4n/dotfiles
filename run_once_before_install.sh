@@ -20,10 +20,9 @@ function install__pkgs
     echo "info: install packages - mise"
     if not type -q mise
         curl --silent --show-error --location https://mise.run | sh
+        ~/.local/bin/mise activate fish | source
     end
 
-    echo "info: install packages - mise"
-    ~/.local/bin/mise activate fish | source
     mise use -g fzf@latest
     mise use -g neovim@latest
     mise use -g node@latest
