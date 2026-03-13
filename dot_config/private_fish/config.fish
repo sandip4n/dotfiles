@@ -12,7 +12,7 @@ starship init fish | source
 zoxide init fish | source
 
 # Set theme
-fish_config theme choose "Catppuccin Mocha"
+fish_config theme choose catppuccin-mocha
 
 # Restore old backward-kill-* bindings
 bind alt-backspace backward-kill-word
