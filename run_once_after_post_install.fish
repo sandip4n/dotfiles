@@ -19,4 +19,10 @@ function install__pkgs
     ~/.tmux/plugins/tpm/bin/install_plugins
 end
 
+function program__conf
+    echo "info: program configuration - git"
+    git config --global core.editor nvim
+end
+
 install__pkgs
+program__conf
