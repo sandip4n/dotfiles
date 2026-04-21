@@ -27,6 +27,19 @@ function install__pkgs
     fisher install jorgebucaran/fisher
     fisher install PatrickF1/fzf.fish
     fisher install catppuccin/fish
+
+    echo "info: install packages - mise"
+    if not type -q mise
+        curl --silent --show-error --location https://mise.run/fish | sh
+        source ~/.config/fish/config.fish
+    end
+
+    mise use -g fzf@latest
+    mise use -g neovim@latest
+    mise use -g node@latest
+    mise use -g starship@latest
+    mise use -g tmux@latest
+    mise use -g zoxide@latest
 end
 
 cleanup__pkgs
