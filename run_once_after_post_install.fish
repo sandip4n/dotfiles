@@ -18,6 +18,9 @@ function install__pkgs
         exit 1
     end
     ~/.tmux/plugins/tpm/bin/install_plugins
+
+    echo "info: install packages - nvim"
+    nvim --headless "+Lazy! restore" +qa
 end
 
 function program__conf
