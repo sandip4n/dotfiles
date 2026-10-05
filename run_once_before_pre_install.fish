@@ -20,8 +20,6 @@ function cleanup__pkgs
     echo "info: cleanup - fish"
     rm -rf ~/.config/fish
     mkdir -p ~/.config/fish
-    touch ~/.config/fish/config.fish
-    source ~/.config/fish/config.fish
 
     echo "info: cleanup - starship"
     rm -rf ~/.config/starship.toml
