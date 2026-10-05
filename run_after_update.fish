@@ -1,14 +1,29 @@
 #!/usr/bin/env fish
 
-function update__pkgs
-    echo "info: update packages - mise"
+function examine__deps
+    echo "info: examine dependencies"
+    for dep in mise fisher
+        if not type -q $dep
+            echo "error: examine dependencies - $dep not found" >&2
+            exit 1
+        end
+    end
+    if not test -x ~/.tmux/plugins/tpm/bin/update_plugins
+        echo "error: examine dependencies - tpm not found" >&2
+        exit 1
+    end
+end
+
+function upgrade__pkgs
+    echo "info: upgrade packages - mise"
     mise upgrade --bump
 
-    echo "info: update packages - fisher"
+    echo "info: upgrade packages - fisher"
     fisher update
 
-    echo "info: update packages - tmux"
+    echo "info: upgrade packages - tmux"
     ~/.tmux/plugins/tpm/bin/update_plugins all
 end
 
-update__pkgs
+examine__deps
+upgrade__pkgs
