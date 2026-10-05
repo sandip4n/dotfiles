@@ -29,10 +29,8 @@ function install__pkgs
     fisher install catppuccin/fish
 
     echo "info: install packages - mise"
-    if not type -q mise
-        curl --silent --show-error --location https://mise.run/fish | sh
-        source ~/.config/fish/config.fish
-    end
+    curl --silent --show-error --location https://mise.run/fish | sh
+    ~/.local/bin/mise activate fish | source
 
     mise use -g fzf@latest
     mise use -g neovim@latest
